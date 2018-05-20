@@ -3,7 +3,7 @@
                         <a href="#" class="list-group-item active">
                           Navigatiion
                         </a>
-                        <a href="../student-advising-system" class="list-group-item">View All Students</a>
+                        <a href="../project-advising" class="list-group-item">View All Students</a>
                         <a href="allsubjects.php" class="list-group-item">View All Subjects</a>
                         <a href="allcourses.php" class="list-group-item">View All Courses</a>
                       </div>
