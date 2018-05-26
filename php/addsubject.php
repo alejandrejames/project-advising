@@ -12,5 +12,5 @@
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
 	
-	header("Location:../editsubject.php?id="+$row['subject_id']);
+	header("Location:../editsubject.php?id=".$row['subject_id']);
 ?>

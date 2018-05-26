@@ -41,7 +41,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Student Advising System</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,19 +51,6 @@
       <form class="navbar-form navbar-left">
 
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -82,7 +69,7 @@
             <div class="col-md-10">
                   <div class="panel panel-default">
                     <div class="panel-heading">
-                      <h3 class="panel-title">Advising</h3>
+                      <h3 class="panel-title">Student List</h3>
                     </div>
                     <div class="panel-body">
                           <h2 class="sub-header">Recently Added</h2>
@@ -121,8 +108,8 @@
 
                                       echo '
                                           <td>'.$row2['course_name'].'</td>
-                                           <td><a href="editstudent.php?id='.$row['stud_id'].'"><button type="button" class="btn btn-success">Edit</button></a></td>
-                                           <td><a href="php/advising.php?id='.$row['stud_id'].'"><button type="button" class="btn btn-primary">Advise</button></a></td>
+                                           <td><a href="editstudent.php?id='.$row['stud_id'].'&courseid='.$row['course_id'].'"><button type="button" class="btn btn-success">Edit</button></a></td>
+                                           <td><a href="advising.php?id='.$row['stud_id'].'"><button type="button" class="btn btn-primary">Advise</button></a></td>
                                           </tr>
                                           ';
                                     }

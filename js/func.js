@@ -215,3 +215,65 @@ var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "php/refaddtable.php?id="+subid, true);
   xhttp.send();
 }
+
+function advise(id,year,sem,courseid){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("advbutton").innerHTML = '<a href="advised.php?id='+id+'&yrlvl='+year+'&sem='+sem+'&courseid='+courseid+'"><button class="btn btn-success">Advise for this semester</button></a>';
+        document.getElementById("advisetbl").innerHTML = this.responseText;
+        document.getElementById("semgrade").style.display = "block";
+     }
+  };
+  
+  xhttp.open("GET", "php/advisesem.php?id="+id+'&courseid='+"&year="+year+"&sem="+sem, true);
+  xhttp.send();
+}
+
+function addstudsub(id,subid,courseid,yrlvl,sem){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("advstbl").innerHTML = this.responseText;
+     }
+  };
+  
+  xhttp.open("GET", "php/addstudsub.php?id="+id+"&subid="+subid+"&courseid="+courseid+"&yrlvl="+yrlvl+"&sem="+sem, true);
+  xhttp.send();
+}
+
+function remstudsub(id,subid,courseid,yrlvl,sem){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("advstbl").innerHTML = this.responseText;
+     }
+  };
+  
+  xhttp.open("GET", "php/remstudsub.php?id="+id+"&subid="+subid+"&courseid="+courseid+"&yrlvl="+yrlvl+"&sem="+sem, true);
+  xhttp.send();
+}
+
+function printadvslip(divName){
+   var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+
+function addgrade(id,subid){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("alert2").innerHTML = this.responseText;
+     }
+  };
+
+  var grade = document.getElementById("subgrade-"+subid).value;
+  xhttp.open("GET", "php/addgrade.php?id="+id+"&subid="+subid+"&subgrade="+grade, true);
+  xhttp.send();
+}

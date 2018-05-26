@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Student Advising System</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,19 +52,6 @@
       <form class="navbar-form navbar-left">
 
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -207,6 +194,278 @@
                       </div>
                     </div>
                   </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">1st Year 1st Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="1st1stsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '1' AND subj_course.subj_semester = '1'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">1st Year 2nd Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="1st2ndsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '1' AND subj_course.subj_semester = '2'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">2nd Year 1st Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="2nd1stsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '2' AND subj_course.subj_semester = '1'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">2nd Year 2nd Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="2nd2ndsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '2' AND subj_course.subj_semester = '2'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">3rd Year 1st Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="3rd1stsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '3' AND subj_course.subj_semester = '1'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">3rd Year 2nd Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="3rd2ndsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '3' AND subj_course.subj_semester = '1'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">4th Year 1st Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="4th1stsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '4' AND subj_course.subj_semester = '1'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-5">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">4th Year 2nd Sem</h3>
+                            </div>
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Units</th>
+                                    <th>Grade</th>
+                                  </thead>
+                                  <tbody id="4th2ndsub">
+                                        <?php
+                                             $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '4' AND subj_course.subj_semester = '1'";
+                                            $result = $conn->query($sql);
+                                            while($row = $result->fetch_assoc()){
+                                                echo '
+                                                      <tr>
+                                                          <td>'.$row['subject_code'].'</td>
+                                                          <td>'.$row['subject_description'].'</td>
+                                                          <td>'.$row['subject_units'].'</td>
+                                                          <td><input type="number" class="form-control" value="'.$row['subj_grade'].'"></td>
+                                                      </tr>
+                                                    ';
+                                            }
+                                        ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                    </div>
             </div>
           </div>
     </div>

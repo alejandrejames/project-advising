@@ -16,5 +16,5 @@
 	$sql = "SELECT stud_id FROM student WHERE stud_univid = '".$studno."'";
 	$result = $conn->query($sql);
 	$row = $result->fetch_assoc();
-	header("Location: ../editstudent.php?id=".$row['stud_id']);
+	header("Location: ../editstudent.php?id=".$row['stud_id']."&courseid=".$course);
 ?>
