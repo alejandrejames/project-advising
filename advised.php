@@ -54,6 +54,12 @@
         top: 0;
         
       }
+
+      @media print{
+        div.container-print{
+          margin: : 10px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -68,7 +74,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Student Advising System</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,19 +84,6 @@
       <form class="navbar-form navbar-left">
 
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -178,7 +171,67 @@
                               </tbody>
                         </table>
                         <h3>Total Units: <?php echo $totunits?></h3>
-                        <button type="button" class="btn btn-info" onclick="printadvslip('advisetbl')">Print Slip</button>
+                        <div id="printtbl" style="display: none;">
+                          <div class="container-print">
+                            <table class="table table-striped">
+                                <tbody>
+                                  <?php
+                                      $id = $_GET['id'];
+
+                                      $sql = "SELECT * FROM student,course,college WHERE college.college_id=student.college_id AND course.course_id=student.course_id AND stud_id = '".$id."'";
+                                      $result = $conn->query($sql);
+                                      $row = $result->fetch_assoc();
+                                      echo '
+                                            <tr>
+                                                <td>Student No.</td>
+                                                <td>'.$row['stud_univid'].'</td>
+                                                <td>College/Department</td>
+                                                <td>'.$row['college_name'].'</td>
+                                           </tr>
+                                           <tr>
+                                                <td>Name</td>
+                                                <td>'.$row['stud_fname'].' '.$row['stud_lname'].'</td>
+                                                <td>Course</td>
+                                                <td>'.$row['course_name'].'</td>
+                                           </tr>
+                                           <tr>
+                                              <td>'.$row['stud_status'].'</td>
+                                           </tr>
+                                            ';  
+                                ?>
+                              </tbody>
+                            </table>
+                          </div>
+                            <h3>Advisement Slip</h3>
+                        <table class="table table-striped">
+                              <thead>
+                                <th>Subject Code</th>
+                                <th>Subject Description</th>
+                                <th>Subject Units</th>
+                                <th>Course</th>
+                              </thead>
+                              <tbody id="advstbl">
+                                <?php
+                                    $sql = "SELECT * FROM student_subjs,subject,subj_course,course WHERE subject.subject_id=subj_course.subj_id AND course.course_id=subj_course.course_id AND student_subjs.subject_id=subject.subject_id AND student_subjs.stud_id = '".$id."' AND subj_course.subj_yrlvl = '".$year."' AND subj_course.subj_semester = '".$sem."'";
+                                    $totunits = 0;
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()){
+                                        echo '
+                                              <tr>
+                                                  <td>'.$row['subject_code'].'</td>
+                                                  <td>'.$row['subject_description'].'</td>
+                                                  <td>'.$row['subject_units'].'</td>
+                                                  <td>'.$row['course_name'].'</td>
+                                              </tr>
+                                            ';
+                                          $totunits = $totunits + $row['subject_units'];
+                                    }
+                                ?>    
+                              </tbody>
+                        </table>
+                        <h3>Total Units: <?php echo $totunits?></h3>
+                        </div>
+                        <button type="button" class="btn btn-info" onclick="printadvslip('printtbl')">Print Slip</button>
                       </div>
 
         <div class="col-md-10 col-md-offset-2">
@@ -230,7 +283,7 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>

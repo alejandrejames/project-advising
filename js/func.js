@@ -257,7 +257,6 @@ function remstudsub(id,subid,courseid,yrlvl,sem){
 function printadvslip(divName){
    var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;
-
      document.body.innerHTML = printContents;
 
      window.print();
