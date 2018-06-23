@@ -276,3 +276,23 @@ function addgrade(id,subid){
   xhttp.open("GET", "php/addgrade.php?id="+id+"&subid="+subid+"&subgrade="+grade, true);
   xhttp.send();
 }
+
+function pagina(page,book,start,end){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("pagina-tbl").innerHTML = this.responseText;
+      document.getElementById("page-"+page).classList.add('active');
+      var pages = document.getElementById("totpages").value;
+      var i=0;
+      while(i<=pages){
+          if(i!=page)
+            document.getElementById("page-"+i).classList.remove('active');
+          i++;
+      }
+     }
+  };
+  
+  xhttp.open("GET", "php/pagination.php?book="+book+"&start="+start+"&end="+end, true);
+  xhttp.send();
+}

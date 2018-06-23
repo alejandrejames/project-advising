@@ -194,8 +194,16 @@
                       </div>
                     </div>
                   </div>
-
-                    <div class="col-md-5">
+                    <div class="col-md-12">
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#1styr-tab" aria-controls="products" role="tab" data-toggle="tab">1st Sem</a></li>
+                        <li role="presentation"><a href="#2ndyr-tab" aria-controls="products" role="tab" data-toggle="tab">2nd Year</a></li>
+                        <li role="presentation"><a href="#3rdyr-tab" aria-controls="products" role="tab" data-toggle="tab">3rd Year</a></li>
+                        <li role="presentation"><a href="#4thyr-tab" aria-controls="products" role="tab" data-toggle="tab">4th Year</a></li>
+                      </ul>
+                      <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="1styr-tab">
+                            <div class="col-md-6">
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">1st Year 1st Sem</h3>
@@ -229,7 +237,7 @@
                             </div>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">1st Year 2nd Sem</h3>
@@ -261,9 +269,11 @@
                                 </table>
                               </div>
                             </div>
-                    </div>
+                        </div>
+                        </div>
 
-                    <div class="col-md-5">
+                        <div role="tabpanel" class="tab-pane" id="2ndyr-tab">
+                              <div class="col-md-5">
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">2nd Year 1st Sem</h3>
@@ -329,9 +339,11 @@
                                 </table>
                               </div>
                             </div>
-                    </div>
+                          </div>
+                        </div>
 
-                    <div class="col-md-5">
+                        <div role="tabpanel" class="tab-pane" id="3rdyr-tab">
+                            <div class="col-md-5">
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">3rd Year 1st Sem</h3>
@@ -397,9 +409,11 @@
                                 </table>
                               </div>
                             </div>
-                    </div>
+                          </div>
+                        </div>
 
-                    <div class="col-md-5">
+                        <div role="tabpanel" class="tab-pane" id="4thyr-tab">
+                              <div class="col-md-5">
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">4th Year 1st Sem</h3>
@@ -465,6 +479,9 @@
                                 </table>
                               </div>
                             </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
             </div>
           </div>

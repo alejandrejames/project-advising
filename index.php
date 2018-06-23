@@ -85,9 +85,9 @@
                                   <th>Advise</th>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody id="pagina-tbl">
                                 <?php
-                                    $sql = "SELECT * FROM student";
+                                    $sql = "SELECT * FROM student LIMIT 0,8";
                                     $result = $conn->query($sql);
                                     while($row = $result->fetch_assoc()){
                                       echo '
@@ -116,6 +116,28 @@
                                 ?>
                               </tbody>
                             </table>
+                            <?php
+                                  $sql = "SELECT COUNT(*) AS TOTAL FROM student";
+                                  $result = $conn->query($sql);
+                                  $row = $result->fetch_assoc();
+                                  $total = $row['TOTAL'];
+                                  $numpages = $total/8;
+                                  $pagenum = 8;
+                                  echo '
+                                      <input type="number" id="totpages" value="'.$pagenum.'" hidden>
+                                      <nav aria-label="Page Navigation">
+                                        <ul class="pagination">';
+                                    for($i=0;$i<$numpages;$i++){
+                                        if($i==0)
+                                            echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagina('.$i.',3,0,'.$pagenum.')">'.($i+1).'</a></li>';
+                                        else
+                                            echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagina('.$i.',3,'.$pagenum.','.($pagenum = $pagenum+$pagenum).')">'.($i+1).'</a></li>';
+                                    }
+                                  echo '
+                                        </ul>
+                                      </nav>
+                                      ';
+                                ?>
                           </div>
                     </div>
                   </div>

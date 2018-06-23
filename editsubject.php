@@ -119,17 +119,18 @@
                     <h3 class="panel-title">Add Pre-requisite</h3>
                   </div>
                   <div class="panel-body">
-                    <table class="table">
+                    <table id="addtable" class="table">
                       <thead>
                           <th>Subject Code</th>
                           <th>Subject Description</th>
                           <th>Subject Units</th>
                           <th>Add</th>
                       </thead>
-                      <tbody id="addtable">
+                      <tbody id="pagina-tbl">
                         <?php
-                            $sql = "SELECT * FROM subject WHERE subject_id != '".$id."'";
+                            $sql = "SELECT * FROM subject WHERE subject_id != '".$id."' LIMIT 0,8";
                             $result  = $conn->query($sql);
+                            echo '<input type="number" id="page-id" value="'.$id.'" hidden>';
                             while($row = $result->fetch_assoc()){
                               $sql2 = "SELECT count(id) FROM subject_preq WHERE subject_id_preq = '".$row['subject_id']."' AND subject_id = '".$id."'";
                               $result2 = $conn->query($sql2);
@@ -147,6 +148,28 @@
                         ?>
                       </tbody>
                     </table>
+                    <?php
+                                  $sql = "SELECT COUNT(*) AS TOTAL FROM subject WHERE subject_id != '".$id."'";
+                                  $result = $conn->query($sql);
+                                  $row = $result->fetch_assoc();
+                                  $total = $row['TOTAL'];
+                                  $numpages = $total/8;
+                                  $pagenum = 8;
+                                  echo '
+                                      <input type="number" id="totpages" value="'.$pagenum.'" hidden>
+                                      <nav aria-label="Page Navigation">
+                                        <ul class="pagination">';
+                                    for($i=0;$i<$numpages;$i++){
+                                        if($i==0)
+                                            echo '<li class="active" id="page-'.$i.'"><a href="#" onclick="pagina('.$i.',5,0,'.$pagenum.')">'.($i+1).'</a></li>';
+                                        else
+                                            echo '<li class="" id="page-'.$i.'"><a href="#" onclick="pagina('.$i.',5,'.$pagenum.','.($pagenum = $pagenum+$pagenum).')">'.($i+1).'</a></li>';
+                                    }
+                                  echo '
+                                        </ul>
+                                      </nav>
+                                      ';
+                                ?>
                   </div>
                 </div>
             </div>

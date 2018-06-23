@@ -4,6 +4,15 @@
 		$id = $_GET['id'];
 		$sql = "SELECT * FROM subject WHERE subject_id != '".$id."'";
                             $result  = $conn->query($sql);
+    echo '
+             <thead>
+                          <th>Subject Code</th>
+                          <th>Subject Description</th>
+                          <th>Subject Units</th>
+                          <th>Add</th>
+                      </thead>
+                      <tbody id="pagina-tbl">
+          ';
                             while($row = $result->fetch_assoc()){
                               $sql2 = "SELECT count(id) FROM subject_preq WHERE subject_id_preq = '".$row['subject_id']."' AND subject_id = '".$id."'";
                               $result2 = $conn->query($sql2);
@@ -18,4 +27,5 @@
                                     </tr>
                                     ';
                             }
+      echo '</tbody>';
 ?>

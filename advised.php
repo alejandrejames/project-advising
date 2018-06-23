@@ -138,7 +138,51 @@
                   </div>
             </div>
 
-          
+          <div class="col-md-10">
+              <div class="panel-group" id="accordion" role="tablist">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h3 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Add 1st Year Subjects</a></h3>
+                  </div>
+                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                        <table class="table table-striped">
+                              <thead>
+                                <th>Subject Code</th>
+                                <th>Subject Description</th>
+                                <th>Subject Units</th>
+                                <th>Course</th>
+                                <th>Subject Year</th>
+                                <th>Subject Semester</th>
+                                <th>Add</th>
+                              </thead>
+                              <tbody>
+                                <?php
+                                    $sql = "SELECT * FROM subj_course,subject,course WHERE subj_course.subj_id=subject.subject_id AND subj_course.course_id=course.course_id AND subj_course.course_id = '".$courseid."'";
+                                    $result = $conn->query($sql);
+                                    while($row = $result->fetch_assoc()){
+                                            echo '
+                                                  <tr>
+                                                      <td>'.$row['subject_code'].'</td>
+                                                      <td>'.$row['subject_description'].'</td>
+                                                      <td>'.$row['subject_units'].'</td>
+                                                      <td>'.$row['course_name'].'</td>
+                                                      <td>'.$row['subj_yrlvl'].'</td>
+                                                      <td>'.$row['subj_semester'].'</td>
+                                                      <td><button type="button" class="btn btn-success" onclick="addstudsub('.$id.','.$row['subject_id'].','.$courseid.','.$year.','.$sem.')">Add</button></td>
+                                                  </tr>
+                                                ';
+                                    }
+                                ?>
+                              </tbody>
+                        </table>
+                  </div>
+                    </div>
+                 </div> 
+              </div>
+            </div>
+          </div>
             
                       <div class="col-md-10" id="advisetbl">
                         <h3>Advisement Slip</h3>
@@ -233,52 +277,6 @@
                         </div>
                         <button type="button" class="btn btn-info" onclick="printadvslip('printtbl')">Print Slip</button>
                       </div>
-
-        <div class="col-md-10 col-md-offset-2">
-              <div class="panel-group" id="accordion" role="tablist">
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h3 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Add 1st Year Subjects</a></h3>
-                  </div>
-                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        <div class="container-fluid">
-                        <table class="table table-striped">
-                              <thead>
-                                <th>Subject Code</th>
-                                <th>Subject Description</th>
-                                <th>Subject Units</th>
-                                <th>Course</th>
-                                <th>Subject Year</th>
-                                <th>Subject Semester</th>
-                                <th>Add</th>
-                              </thead>
-                              <tbody>
-                                <?php
-                                    $sql = "SELECT * FROM subj_course,subject,course WHERE subj_course.subj_id=subject.subject_id AND subj_course.course_id=course.course_id AND subj_course.course_id = '".$courseid."'";
-                                    $result = $conn->query($sql);
-                                    while($row = $result->fetch_assoc()){
-                                            echo '
-                                                  <tr>
-                                                      <td>'.$row['subject_code'].'</td>
-                                                      <td>'.$row['subject_description'].'</td>
-                                                      <td>'.$row['subject_units'].'</td>
-                                                      <td>'.$row['course_name'].'</td>
-                                                      <td>'.$row['subj_yrlvl'].'</td>
-                                                      <td>'.$row['subj_semester'].'</td>
-                                                      <td><button type="button" class="btn btn-success" onclick="addstudsub('.$id.','.$row['subject_id'].','.$courseid.','.$year.','.$sem.')">Add</button></td>
-                                                  </tr>
-                                                ';
-                                    }
-                                ?>
-                              </tbody>
-                        </table>
-                  </div>
-                    </div>
-                 </div> 
-              </div>
-            </div>
-          </div>
                       
     </div>
 
